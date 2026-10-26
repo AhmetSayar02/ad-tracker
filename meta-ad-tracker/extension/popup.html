@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 340px; background: #0f172a; color: #f8fafc; font-family: 'Segoe UI', sans-serif; padding: 14px; margin: 0; }
+    h3 { margin: 0 0 6px 0; font-size: 16px; color: #38bdf8; }
+    .server-tag { font-size: 11px; color: #64748b; margin-bottom: 10px; display: block; }
+    label { font-size: 12px; color: #94a3b8; display: block; margin-top: 8px; }
+    input, select { width: 100%; box-sizing: border-box; padding: 8px; margin-top: 4px; background: #1e293b; border: 1px solid #334155; color: #fff; border-radius: 6px; font-size: 13px; }
+    .row { display: flex; gap: 8px; }
+    .row > div { flex: 1; }
+    .btn { width: 100%; padding: 10px; margin-top: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px; }
+    .btn-start { background: #2563eb; color: #fff; }
+    .btn-stop { background: #dc2626; color: #fff; margin-top: 6px; }
+    .btn-dl { background: #059669; color: #fff; flex: 1; padding: 8px; font-size: 12px; margin-top: 8px; }
+    .status-box { background: #1e293b; border: 1px solid #334155; padding: 10px; border-radius: 6px; margin-top: 12px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h3>Meta Scraper</h3>
+
+  <div class="row">
+    <div style="flex:2;">
+      <label>Anahtar Kelime</label>
+      <input type="text" id="keyword" placeholder="kaynak saç">
+    </div>
+    <div>
+      <label>Ülke</label>
+      <select id="country">
+        <option value="TR">TR</option>
+        <option value="US">US</option>
+        <option value="DE">DE</option>
+        <option value="GB">GB</option>
+        <option value="ALL">Tümü</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label>Sıralama</label>
+      <select id="sortBy">
+        <option value="newest">En Yeniler</option>
+        <option value="relevancy">Alaka Düzeyi</option>
+      </select>
+    </div>
+    <div>
+      <label>Tarama Modu</label>
+      <select id="scanMode">
+        <option value="incremental">Sadece Yeniler (Hızlı)</option>
+        <option value="full">Tam Tarama (Hepsi)</option>
+      </select>
+    </div>
+  </div>
+
+  <label>Maksimum Reklam Sınırı (0 = Sınırsız / Hepsini Al)</label>
+  <input type="number" id="maxAds" value="0" min="0">
+
+  <button class="btn btn-start" id="startBtn">▶ Taramayı Başlat (Arka Plan)</button>
+  <button class="btn btn-stop" id="stopBtn">⏹ Taramayı Durdur</button>
+
+  <div class="status-box">
+    <div><strong>Durum:</strong> <span id="stText">Hazır</span></div>
+    <div style="margin-top:4px;"><strong>Toplanan Reklam:</strong> <span id="stCount" style="color:#38bdf8;font-weight:bold;">0</span></div>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-dl" id="dlExcel">📥 Excel İndir</button>
+    <button class="btn btn-dl" id="dlCsv" style="background:#0d9488;"> CSV </button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

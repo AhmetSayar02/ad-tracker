@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "name": "Meta Ad Scraper",
+  "version": "1.0",
+  "description": "Meta Reklam Kütüphanesini yüksek hızda tarar, sunucuya ve Google Sheets'e aktarır.",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": [
+    "https://www.facebook.com/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
